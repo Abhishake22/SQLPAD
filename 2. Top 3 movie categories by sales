@@ -1,0 +1,36 @@
+Write a query to find the top 3 film categories that generated the most sales.
+The order of your results doesn't matter.
+Table: sales_by_film_category 
+
+Total sales by movie categories.
+
+  col_name   | col_type
+-------------+----------
+ category    | text
+ total_sales | numeric
+ 
+Sample results
+
+category
+-----------
+Category 1
+Category 2
+Category 3
+
+
+Query:
+
+WITH CTE AS (
+  SELECT category,DENSE_RANK() OVER (ORDER BY total_Sales desc) as rn
+  FROM sales_by_film_category
+)
+SELECT category
+FROM CTE
+WHERE rn <=3
+
+Output:
+
+category
+Sports
+Sci-Fi
+Animation
