@@ -10,6 +10,13 @@ Movie sales by store
  manager     | text
  total_sales | numeric
  
+ Sample Data:
+ 
+ store	     manager	    total_sales
+Woodridge	  Jon Stephens	  33927.04
+Lethbridge	Mike Hillyer	  33489.47
+
+ 
 Sample results
 
    store   |   manager
