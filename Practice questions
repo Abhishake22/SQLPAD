@@ -1,0 +1,26 @@
+1. Top store for movie sales
+
+Write a query to return the name of the store and its manager, that generated the most sales.
+
+Movie sales by store
+
+  col_name   | col_type
+-------------+----------
+ store       | text
+ manager     | text
+ total_sales | numeric
+ 
+Sample results
+
+   store   |   manager
+-----------+--------------
+ Woodridge | Jon Stephens
+ 
+ 
+ WITH CTE AS (
+  SELECT store,manager,DENSE_RANK() OVER (ORDER BY total_Sales desc) as rn
+  FROM sales_by_store
+ )
+ SELECT store,manager
+ FROM CTE
+ WHERE rn = 1
